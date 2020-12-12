@@ -13,6 +13,8 @@ public class CubeBehaviour : MonoBehaviour
     public bool isColliding;
     public bool debug;
     public List<CubeBehaviour> contacts;
+    public float friction;
+    public float mass; 
 
     public MeshFilter meshFilter;
     private Bounds bounds;
@@ -25,7 +27,7 @@ public class CubeBehaviour : MonoBehaviour
 
         bounds = meshFilter.mesh.bounds;
         size = bounds.size;
-
+        friction = 0.1f; 
     }
 
     // Update is called once per frame

@@ -11,6 +11,7 @@ public class BulletBehaviour : MonoBehaviour
     public float bulletX;
     public float bulletY;
     public float bulletZ;
+    public float mass;  
 
     private MeshFilter meshFilter;
     public bool isColliding;
@@ -19,14 +20,17 @@ public class BulletBehaviour : MonoBehaviour
     void Start()
     {        
         isColliding = false;
+        mass = 1;
         meshFilter = GetComponent<MeshFilter>();
     }
 
     // Update is called once per frame
     void Update()
-    {       
+    {      
+        _BoxHit();  
         _Move();
         _CheckBounds();
+       
     }
 
     private void _Move()
@@ -39,6 +43,18 @@ public class BulletBehaviour : MonoBehaviour
         if (Vector3.Distance(transform.position, Vector3.zero) > range)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void _BoxHit()
+    {
+        if(isColliding == true )
+        {
+            
+            //direction = direction * -1;
+            //speed = (((mass - 10) / (mass + 10)) * speed) + (((2 * 10) / mass + 10) * 0);
+            
+
         }
     }
 }
