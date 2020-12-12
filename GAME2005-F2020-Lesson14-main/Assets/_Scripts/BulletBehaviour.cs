@@ -38,7 +38,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, Vector3.zero) > range)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
