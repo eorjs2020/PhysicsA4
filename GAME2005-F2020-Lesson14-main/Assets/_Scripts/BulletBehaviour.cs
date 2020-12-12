@@ -8,6 +8,9 @@ public class BulletBehaviour : MonoBehaviour
     public float speed;
     public Vector3 direction;
     public float range;
+    public float bulletX;
+    public float bulletY;
+    public float bulletZ;
 
     private MeshFilter meshFilter;
     public bool isColliding;
@@ -21,7 +24,7 @@ public class BulletBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {       
         _Move();
         _CheckBounds();
     }

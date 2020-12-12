@@ -41,7 +41,7 @@ public class CollisionManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < bullet.Length; i++)
+        for (int i = 0; i < actors.Length; i++)
         {
             for (int j = 0; j < actors.Length; j++)
             {
@@ -83,8 +83,8 @@ public class CollisionManager : MonoBehaviour
         var z = Mathf.Max(b.min.z, Mathf.Min(a.transform.position.z, b.max.z));
 
         var distance = Mathf.Sqrt((x - a.transform.position.x) * (x - a.transform.position.x) +
-            (x - a.transform.position.y) * (x - a.transform.position.y) +
-            (x - a.transform.position.z) * (x - a.transform.position.z));
+            (y - a.transform.position.y) * (y - a.transform.position.y) +
+            (z - a.transform.position.z) * (z - a.transform.position.z));
 
         if(distance < radius)
         {
