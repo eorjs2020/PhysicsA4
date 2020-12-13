@@ -20,14 +20,14 @@ public class CollisionManager : MonoBehaviour
     void FixedUpdate()
     {
         bullet = FindObjectsOfType<BulletBehaviour>();
-        /*for (int i = 0; i < bullet.Length; i++)
+        for (int i = 0; i < bullet.Length; i++)
         {
             bullet[i].isColliding = false;
         }
         for (int i = 0; i < actors.Length; i++)
         {
             actors[i].isColliding = false;
-        }*/
+        }
 
 
         for (int i = 0; i < bullet.Length; i++)
