@@ -34,10 +34,9 @@ public class CollisionManager : MonoBehaviour
         {
             for (int j = 0; j < actors.Length; j++)
             {
-                if (i != j)
-                {
-                    CheckAABBandSphere(bullet[i], actors[j]);
-                }
+                
+                 CheckAABBandSphere(bullet[i], actors[j]);
+               
             }
         }
 
