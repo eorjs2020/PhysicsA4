@@ -59,10 +59,37 @@ public class CollisionManager : MonoBehaviour
             (a.min.y <= b.max.y && a.max.y >= b.min.y) &&
             (a.min.z <= b.max.z && a.max.z >= b.min.z))
         {
-            if (!a.contacts.Contains(b))
+            if (!a.contacts.Contains(b) && a.movable)
             {
                 a.contacts.Add(b);
+                if (a.transform.position.x > b.max.x)
+                {
+                    a.direction.x *= -1;
+                }
+                else if (a.transform.position.x < b.min.x)
+                {
+                    a.direction.x *= -1;
+                }
+
+                if (a.transform.position.y > b.max.y)
+                {
+                    a.direction.y *= -1;
+                }
+                else if (a.transform.position.y < b.min.y)
+                {
+                    a.direction.y *= -1;
+                }
+
+                if (a.transform.position.z > b.max.z)
+                {
+                    a.direction.z *= -1;
+                }
+                else if (a.transform.position.z < b.min.z)
+                {
+                    a.direction.z *= -1;
+                }
                 a.isColliding = true;
+
             }
         }
         else
@@ -89,11 +116,11 @@ public class CollisionManager : MonoBehaviour
         if(distance < radius)
         {
             a.transform.position -= a.direction * a.speed * Time.deltaTime;
-            /*if (b.movable)
+            if (b.movable)
             {
                 b.direction.x = a.direction.x;
                 b.direction.z = a.direction.z;
-            }*/
+            }
             if (a.transform.position.x  > b.max.x)
             {
                 a.direction.x *= -1;
