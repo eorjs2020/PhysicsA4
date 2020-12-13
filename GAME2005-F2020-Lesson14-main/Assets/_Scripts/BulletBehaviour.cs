@@ -53,9 +53,9 @@ public class BulletBehaviour : MonoBehaviour
 
             //direction = direction * -1;
             //speed = (((mass - 10) / (mass + 10)) * speed) + (((2 * 10) / mass + 10) * 0);
-            isColliding = false;
+            
             transform.position += direction * speed * Time.deltaTime;
-
+            isColliding = false;
         }
     }
 }
