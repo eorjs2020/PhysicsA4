@@ -212,6 +212,8 @@ MonoBehaviour:
   isColliding: 0
   debug: 0
   contacts: []
+  friction: 0
+  mass: 0
   meshFilter: {fileID: 0}
 --- !u!23 &526557354
 MeshRenderer:
@@ -463,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613454532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.333, y: 0, z: 0}
+  m_LocalPosition: {x: 2.65, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -487,6 +489,8 @@ MonoBehaviour:
   isColliding: 0
   debug: 0
   contacts: []
+  friction: 0
+  mass: 0
   meshFilter: {fileID: 0}
 --- !u!1 &681930395
 GameObject:
@@ -710,6 +714,8 @@ MonoBehaviour:
   isColliding: 0
   debug: 0
   contacts: []
+  friction: 0
+  mass: 0
   meshFilter: {fileID: 0}
 --- !u!1 &1125924261
 GameObject:

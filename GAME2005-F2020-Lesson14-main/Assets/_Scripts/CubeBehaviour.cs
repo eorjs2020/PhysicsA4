@@ -47,7 +47,7 @@ public class CubeBehaviour : MonoBehaviour
         if (debug)
         {
             Gizmos.color = Color.magenta;
-
+            
             Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
         }
     }
