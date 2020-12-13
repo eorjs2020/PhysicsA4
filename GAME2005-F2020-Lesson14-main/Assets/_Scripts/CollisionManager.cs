@@ -88,7 +88,10 @@ public class CollisionManager : MonoBehaviour
 
         if(distance < radius)
         {
-            if (a.transform.position.x > b.max.x)
+
+            b.direction.x = a.direction.x;
+            b.direction.z = a.direction.z;
+            if (a.transform.position.x  > b.max.x)
             {
                 a.direction.x *= -1;
             }

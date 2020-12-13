@@ -14,8 +14,11 @@ public class CubeBehaviour : MonoBehaviour
     public bool debug;
     public List<CubeBehaviour> contacts;
     public float friction;
-    public float mass; 
+    public float mass;
+    public Vector3 direction;
 
+    private float mesh;
+    private float speed;
     public MeshFilter meshFilter;
     private Bounds bounds;
 
@@ -24,7 +27,7 @@ public class CubeBehaviour : MonoBehaviour
     {
         debug = false;
         meshFilter = GetComponent<MeshFilter>();
-
+        speed = 4;
         bounds = meshFilter.mesh.bounds;
         size = bounds.size;
         friction = 0.1f; 
@@ -39,6 +42,7 @@ public class CubeBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        transform.position += direction * speed * Time.deltaTime;
         // physics related calculations
     }
 
