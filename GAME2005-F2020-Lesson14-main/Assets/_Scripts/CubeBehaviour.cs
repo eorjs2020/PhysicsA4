@@ -16,6 +16,7 @@ public class CubeBehaviour : MonoBehaviour
     public float friction;
     public float mass;
     public Vector3 direction;
+    public bool movable; 
 
     private float mesh;
     private float speed;
