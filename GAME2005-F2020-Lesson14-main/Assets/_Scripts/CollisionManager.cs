@@ -98,9 +98,11 @@ public class CollisionManager : MonoBehaviour
             {
                 a.contacts.Remove(b);
                 a.isColliding = false;
+           
             }
 
         }
+
     }
     public static void CheckAABBandSphere(BulletBehaviour a, CubeBehaviour b)
     {
@@ -120,6 +122,7 @@ public class CollisionManager : MonoBehaviour
             {
                 b.direction.x = a.direction.x;
                 b.direction.z = a.direction.z;
+                b.speed = a.speed * 0.5f;
             }
             if (a.transform.position.x  > b.max.x)
             {
