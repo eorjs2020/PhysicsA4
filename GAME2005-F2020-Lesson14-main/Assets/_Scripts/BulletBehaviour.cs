@@ -29,7 +29,7 @@ public class BulletBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {       
-        velocity += direction * speed * Time.deltaTime;
+        velocity = direction * speed;
         _BoxHit();  
         _Move();
         _CheckBounds();
@@ -52,13 +52,8 @@ public class BulletBehaviour : MonoBehaviour
     private void _BoxHit()
     {
         if(isColliding == true )
-        {
-
-            
+        {                       
             //speed = (((mass - 10) / (mass + 10)) * speed) + (((2 * 10) / mass + 10) * 0);
-            
-            
-      
             transform.position += velocity * Time.deltaTime;
             isColliding = false;
         }

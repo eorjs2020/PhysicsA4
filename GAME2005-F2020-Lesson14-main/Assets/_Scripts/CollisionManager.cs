@@ -122,6 +122,7 @@ public class CollisionManager : MonoBehaviour
             {
                 b.direction.x = a.direction.x;
                 b.direction.z = a.direction.z;
+                b.speed = a.speed * 0.5f;
             }
             if (a.transform.position.x  > b.max.x)
             {
