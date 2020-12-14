@@ -24,7 +24,6 @@ public class BulletBehaviour : MonoBehaviour
         isColliding = false;
         mass = 1;
         meshFilter = GetComponent<MeshFilter>();
-        speed = 5;
         lifetime = 0;
         maxLifetime = 500;
     }
