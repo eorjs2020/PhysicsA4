@@ -94,4 +94,14 @@ public class CubeBehaviour : MonoBehaviour
           Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
        
     }
+
+    public void _changeFriction(float a)
+    {
+        friction = a;
+    }
+
+    public void _changeMass(float a)
+    {
+        mass = a;
+    }
 }

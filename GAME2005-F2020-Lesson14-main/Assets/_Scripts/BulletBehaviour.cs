@@ -13,7 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     public float bulletZ;
     public float mass;
     public Vector3 velocity;
-    public int lifetime, maxLifetime;
+    public float lifetime, maxLifetime;
 
     private MeshFilter meshFilter;
     public bool isColliding;
@@ -25,7 +25,7 @@ public class BulletBehaviour : MonoBehaviour
         mass = 1;
         meshFilter = GetComponent<MeshFilter>();
         lifetime = 0;
-        maxLifetime = 500;
+        maxLifetime = 500.0f;
     }
 
     // Update is called once per frame
