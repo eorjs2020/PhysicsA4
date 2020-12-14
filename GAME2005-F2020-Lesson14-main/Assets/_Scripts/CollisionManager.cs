@@ -98,9 +98,11 @@ public class CollisionManager : MonoBehaviour
             {
                 a.contacts.Remove(b);
                 a.isColliding = false;
+           
             }
 
         }
+
     }
     public static void CheckAABBandSphere(BulletBehaviour a, CubeBehaviour b)
     {

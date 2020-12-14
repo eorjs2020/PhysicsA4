@@ -16,10 +16,12 @@ public class CubeBehaviour : MonoBehaviour
     public float friction;
     public float mass;
     public Vector3 direction;
+    public Vector3 velocity;
     public bool movable; 
 
+
     private float mesh;
-    private float speed;
+    public float speed;
     public MeshFilter meshFilter;
     private Bounds bounds;
 
@@ -28,10 +30,11 @@ public class CubeBehaviour : MonoBehaviour
     {
         debug = false;
         meshFilter = GetComponent<MeshFilter>();
-        speed = 4;
+        speed = 30;
         bounds = meshFilter.mesh.bounds;
         size = bounds.size;
-        friction = 0.1f; 
+        friction = 0.9f;
+
     }
 
     // Update is called once per frame
@@ -43,7 +46,22 @@ public class CubeBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position += direction * speed * Time.deltaTime;
+        
+
+
+
+        if(movable)
+        {
+            if (isColliding)
+            {
+                velocity += direction * speed * Time.deltaTime;
+            }
+            transform.position += velocity * Time.deltaTime;
+
+            //speed *= 0.999f;
+     
+        }
+  
         // physics related calculations
     }
 
