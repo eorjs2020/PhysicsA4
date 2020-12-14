@@ -83,6 +83,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_cursorIsLocked = true;
             }
 
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                m_cursorIsLocked = false; 
+            }
+
             if (m_cursorIsLocked)
             {
                 Cursor.lockState = CursorLockMode.Locked;
