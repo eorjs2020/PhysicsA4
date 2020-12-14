@@ -13,6 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     public float bulletZ;
     public float mass;
     public Vector3 velocity;
+    public int lifetime, maxLifetime;
 
     private MeshFilter meshFilter;
     public bool isColliding;
@@ -23,7 +24,9 @@ public class BulletBehaviour : MonoBehaviour
         isColliding = false;
         mass = 1;
         meshFilter = GetComponent<MeshFilter>();
-        speed = 5; 
+        speed = 5;
+        lifetime = 0;
+        maxLifetime = 500;
     }
 
     // Update is called once per frame
@@ -33,9 +36,9 @@ public class BulletBehaviour : MonoBehaviour
         _BoxHit();  
         _Move();
         _CheckBounds();
-       
+        ++lifetime;
     }
-
+    
     private void _Move()
     {
         transform.position += velocity * Time.deltaTime;
@@ -44,6 +47,10 @@ public class BulletBehaviour : MonoBehaviour
     private void _CheckBounds()
     {
         if (Vector3.Distance(transform.position, Vector3.zero) > range)
+        {
+            gameObject.SetActive(false);
+        }
+        if(lifetime >= maxLifetime)
         {
             gameObject.SetActive(false);
         }

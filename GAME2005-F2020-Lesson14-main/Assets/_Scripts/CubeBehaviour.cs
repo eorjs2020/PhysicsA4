@@ -33,6 +33,7 @@ public class CubeBehaviour : MonoBehaviour
         bounds = meshFilter.mesh.bounds;
         size = bounds.size;
         friction = 0.0f;
+        mass = 50;
 
     }
 

@@ -32,6 +32,7 @@ public class PlayerBehaviour : MonoBehaviour
                 if (obj == null) return;
                 obj.transform.position = bulletSpawn.position;
                 obj.transform.rotation = bulletSpawn.rotation;
+                obj.GetComponent<BulletBehaviour>().speed = 5; 
                 obj.GetComponent<BulletBehaviour>().direction = bulletSpawn.forward;
                 obj.SetActive(true);
                 /*var tempBullet = Instantiate(bullet, bulletSpawn.position, Quaternion.identity);

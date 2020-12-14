@@ -121,7 +121,10 @@ public class CollisionManager : MonoBehaviour
             {
                 b.direction.x = a.direction.x;
                 b.direction.z = a.direction.z;
-                b.speed = a.speed * 0.5f;
+                float tempspeeda = a.speed, tempspeedb = b.speed; 
+
+                a.speed = (((a.mass - b.mass) / (a.mass + b.mass)) * tempspeeda) + (((2 * b.mass) / (a.mass + b.mass)) * tempspeedb);
+                b.speed = (((2 * a.mass) / (a.mass + b.mass)) * tempspeeda) + (((b.mass - a.mass) / (a.mass + b.mass)) * tempspeedb);
             }
             if (a.transform.position.x  > b.max.x)
             {
