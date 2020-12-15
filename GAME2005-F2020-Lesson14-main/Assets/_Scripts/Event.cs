@@ -14,4 +14,9 @@ public class Event : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OnClickMainMenu()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }

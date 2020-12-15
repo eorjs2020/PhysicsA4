@@ -26,7 +26,7 @@ public class CollisionManager : MonoBehaviour
         }
         for (int i = 0; i < actors.Length; i++)
         {
-            actors[i].isColliding = false;
+            actors[i].isColliding = false;            
         }
 
 
@@ -61,31 +61,32 @@ public class CollisionManager : MonoBehaviour
             if (!a.contacts.Contains(b) && a.movable)
             {
                 a.contacts.Add(b);
-                if (a.transform.position.x > b.max.x)
+                if (a.transform.position.y > b.max.y && b.Ground)
+                {
+                    a.hasGravity = false;
+                }
+                else if (a.transform.position.y < b.min.y && b.Ground)
+                {
+                    a.hasGravity = false;
+                }
+                if (a.transform.position.x > b.max.x )
                 {
                     a.direction.x *= -1;
+                    
                 }
                 else if (a.transform.position.x < b.min.x)
                 {
-                    a.direction.x *= -1;
+                    a.direction.x *= -1;                    
                 }
 
-                if (a.transform.position.y > b.max.y)
-                {
-                    a.direction.y *= -1;
-                }
-                else if (a.transform.position.y < b.min.y)
-                {
-                    a.direction.y *= -1;
-                }
-
+               
                 if (a.transform.position.z > b.max.z)
                 {
-                    a.direction.z *= -1;
+                    a.direction.z *= -1;                   
                 }
                 else if (a.transform.position.z < b.min.z)
                 {
-                    a.direction.z *= -1;
+                    a.direction.z *= -1;                    
                 }
                 a.isColliding = true;
 
@@ -95,11 +96,12 @@ public class CollisionManager : MonoBehaviour
         {
             if (a.contacts.Contains(b))
             {
+                if (!a.hasGravity && b.Ground)
+                { a.hasGravity = true; }
                 a.contacts.Remove(b);
-                a.isColliding = false;
-           
+                a.isColliding = false;                
             }
-
+            
         }
 
     }
@@ -121,7 +123,10 @@ public class CollisionManager : MonoBehaviour
             {
                 b.direction.x = a.direction.x;
                 b.direction.z = a.direction.z;
-                b.speed = a.speed * 0.5f;
+                float tempspeeda = a.speed, tempspeedb = b.speed; 
+
+                a.speed = Mathf.Abs(((a.mass - b.mass) / (a.mass + b.mass)) * tempspeeda) + (((2 * b.mass) / (a.mass + b.mass)) * tempspeedb);
+                b.speed = Mathf.Abs(((2 * a.mass) / (a.mass + b.mass)) * tempspeeda) + (((b.mass - a.mass) / (a.mass + b.mass)) * tempspeedb);
             }
             if (a.transform.position.x  > b.max.x)
             {

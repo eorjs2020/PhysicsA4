@@ -17,8 +17,11 @@ public class CubeBehaviour : MonoBehaviour
     public float mass;
     public Vector3 direction;
     public Vector3 velocity;
-    public bool movable; 
+    public bool movable;
+    public bool hasGravity;
+    public bool Ground;
 
+    public Vector3 gravity;
     private float mesh;
     public float speed;
     public MeshFilter meshFilter;
@@ -33,7 +36,8 @@ public class CubeBehaviour : MonoBehaviour
         bounds = meshFilter.mesh.bounds;
         size = bounds.size;
         friction = 0.0f;
-
+        mass = 50;
+        hasGravity = true;
     }
 
     // Update is called once per frame
@@ -45,6 +49,7 @@ public class CubeBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
+        gravity = new Vector3(0.0f, -0.98f, 0.0f);
         _BoxHit();
         _Move();
        
@@ -52,25 +57,31 @@ public class CubeBehaviour : MonoBehaviour
     }
     private void _Move()
     {
+        
         if(speed > 0)
         {
             speed *= (1 - friction);
         }
-        else if (speed < 0.000001)
+        else if (speed < 0.00001)
         {
             speed = 0;
         }
         
         transform.position += direction * speed * Time.deltaTime;
+        if(movable && hasGravity)
+        {
+            transform.position += gravity * Time.deltaTime;
+        }
+               
     }
     
 
     private void _BoxHit()
     {
         if (isColliding == true)
-        {
+        {            
             velocity = direction * speed;
-            transform.position += velocity * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;           
             isColliding = false;
         }
     }
@@ -82,5 +93,15 @@ public class CubeBehaviour : MonoBehaviour
             
           Gizmos.DrawWireCube(transform.position, Vector3.Scale(new Vector3(1.0f, 1.0f, 1.0f), transform.localScale));
        
+    }
+
+    public void _changeFriction(float a)
+    {
+        friction = a;
+    }
+
+    public void _changeMass(float a)
+    {
+        mass = a;
     }
 }
