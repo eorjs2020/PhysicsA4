@@ -45,10 +45,10 @@ public class BulletBehaviour : MonoBehaviour
 
     private void _CheckBounds()
     {
-        if (Vector3.Distance(transform.position, Vector3.zero) > range)
+        /*if (Vector3.Distance(transform.position, Vector3.zero) > range)
         {
             gameObject.SetActive(false);
-        }
+        }*/
         if(lifetime >= maxLifetime)
         {
             gameObject.SetActive(false);
