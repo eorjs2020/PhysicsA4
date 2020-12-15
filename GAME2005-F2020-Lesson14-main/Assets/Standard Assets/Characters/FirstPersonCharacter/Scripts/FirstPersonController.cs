@@ -198,6 +198,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 newCameraPosition = m_Camera.transform.localPosition;
                 newCameraPosition.y = m_OriginalCameraPosition.y - m_JumpBob.Offset();
             }
+            
             m_Camera.transform.localPosition = newCameraPosition;
         }
 
@@ -237,7 +238,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            if (m_MouseLook.m_cursorIsLocked)
+                m_MouseLook.LookRotation (transform, m_Camera.transform);
+        
         }
 
 
